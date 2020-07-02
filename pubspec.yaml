@@ -1,0 +1,16 @@
+name: splash
+description: This package contains a few InkSplash alternatives
+version: 0.0.1
+homepage: https://uekoetter.dev/
+
+environment:
+  sdk: ">=2.8.0 <3.0.0"
+  flutter: '>=1.17.0 <2.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
