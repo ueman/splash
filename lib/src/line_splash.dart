@@ -3,10 +3,9 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 const Duration _kProgressDuration = Duration(milliseconds: 225);
-const Duration _kFasterProgressDuration = Duration(milliseconds: 150);
 
-class LineSplashFactory extends InteractiveInkFeatureFactory {
-  const LineSplashFactory([this.paint]);
+class _LineSplashFactory extends InteractiveInkFeatureFactory {
+  const _LineSplashFactory(this.paint);
 
   final Paint paint;
 
@@ -24,27 +23,27 @@ class LineSplashFactory extends InteractiveInkFeatureFactory {
     double radius,
     VoidCallback onRemoved,
   }) {
-    return _LineSplash(
+    return LineSplash(
       controller: controller,
       referenceBox: referenceBox,
       position: position,
       color: color,
       onRemoved: onRemoved,
       textDirection: textDirection,
-      paint: paint,
+      newPaint: paint,
     );
   }
 }
 
-class _LineSplash extends InteractiveInkFeature {
-  _LineSplash({
+class LineSplash extends InteractiveInkFeature {
+  LineSplash({
     @required MaterialInkController controller,
     @required RenderBox referenceBox,
     @required Offset position,
     @required Color color,
     @required TextDirection textDirection,
     VoidCallback onRemoved,
-    Paint paint,
+    Paint newPaint,
   })  : assert(color != null),
         assert(position != null),
         assert(textDirection != null),
@@ -70,33 +69,34 @@ class _LineSplash extends InteractiveInkFeature {
     // Add this InkFeature to the controller so that this gets drawn
     controller.addInkFeature(this);
 
-    paint = paint ?? Paint()
-      ..color = color
-      ..strokeWidth = 7
-      ..strokeCap = StrokeCap.round
-      ..style = PaintingStyle.stroke;
+    if (newPaint == null) {
+      paint = Paint()
+        ..color = color
+        ..strokeWidth = 4
+        ..strokeCap = StrokeCap.round
+        ..style = PaintingStyle.stroke;
+    } else {
+      paint = newPaint;
+    }
   }
+
+  static const InteractiveInkFeatureFactory splashFactory =
+      _LineSplashFactory(null);
+
+  static InteractiveInkFeatureFactory customSplashFactory({Paint paint}) =>
+      _LineSplashFactory(paint);
 
   Animation<double> _progressAnimation;
-
   AnimationController _progressController;
-
   Paint paint;
 
-  /// Wird aufgerufen, wenn der Nutzer den Button wirklich gedrueckt hat.
-  /// Hier sollte die Animation verschnellert werden.
+  /// Called when the button press is confirmed.
   @override
-  void confirm() {
-    _progressController..duration = _kFasterProgressDuration;
-  }
+  void confirm() => _progressController.reverse();
 
-  /// Wird aufgerufen, wenn der Nutzer den Button verlaesst und somit
-  /// beispielsweise den Button-Press abbricht.
-  /// Hier sollte also die Animation rueckgaengig gemacht werden.
+  /// Called when the button press is canceled.
   @override
-  void cancel() {
-    _progressController.reverse();
-  }
+  void cancel() => _progressController.reverse();
 
   @override
   void dispose() {
@@ -106,19 +106,22 @@ class _LineSplash extends InteractiveInkFeature {
 
   @override
   void paintFeature(Canvas canvas, Matrix4 transform) {
-    // TODO: support ltr and rtl
+    // TODO: add support for rtl
 
     final progress = _progressAnimation.value;
+    if (progress == 0) {
+      return;
+    }
     final rect = referenceBox.size;
-    final Offset originOffset = MatrixUtils.getAsTranslation(transform);
+
     const double startX = 0;
     final startY = rect.height / 2;
     final endX = rect.width * progress;
-    final endY = rect.height / 2;
     var path = Path();
     path.moveTo(startX, startY);
-    path.lineTo(endX, endY);
-    path.close();
+    path.lineTo(endX, startY);
+
+    final Offset originOffset = MatrixUtils.getAsTranslation(transform);
     path = path.shift(originOffset);
     canvas.drawPath(path, paint);
   }

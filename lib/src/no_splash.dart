@@ -43,7 +43,7 @@ class NoSplash extends InteractiveInkFeature {
           onRemoved: onRemoved,
         );
 
-  static const splashFactory = _NoSplashFactory();
+  static const InteractiveInkFeatureFactory splashFactory = _NoSplashFactory();
 
   @override
   void paintFeature(Canvas canvas, Matrix4 transform) {}

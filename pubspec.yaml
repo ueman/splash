@@ -1,6 +1,6 @@
 name: splash
 description: This package contains a few InkSplash alternatives
-version: 0.0.1
+version: 0.1.0
 homepage: https://uekoetter.dev/
 
 environment:
