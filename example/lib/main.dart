@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Demo'),
+      home: const MyHomePage(title: 'Demo'),
     );
   }
 }
@@ -199,14 +199,7 @@ class Sample extends StatefulWidget {
 class _SampleState extends State<Sample> {
   bool checkBoxValue = false;
 
-  Choice _selectedChoice = choices[0];
-
-  void _select(Choice choice) {
-    // Causes the app to rebuild with the new _selectedChoice.
-    setState(() {
-      _selectedChoice = choice;
-    });
-  }
+  void _select(Choice choice) {}
 
   @override
   Widget build(BuildContext context) {
