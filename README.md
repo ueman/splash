@@ -20,7 +20,8 @@ MaterialApp(
 
 ## List of available splash alternatives
 
-| Name | Usage | Example | Use case |
-|-     |-      |-        |-         |
-| NoSplash | `NoSplash.splashFactory` | TODO image here | You can use this class if you don't want a ripple splash effect |
-| LineSplash | `LineSplashFactory()` Optionally you can provide a paint to customize its appearance. | TODO image here | Draws a line instead of circle |
+| Name | Usage  | Use case |
+|-     |-      |-         |
+| NoSplash | `NoSplash.splashFactory` | You can use this class if you don't want a ripple splash effect |
+| LineSplash | `LineSplash.splashFactory` Optionally you can provide a paint to customize its appearance. | Draws a line instead of circle |
+| PathSplash | `PathSplash.splashFactory(path)` Optionally you can provide a paint to customize its appearance. | Animates a path |
