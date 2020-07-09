@@ -1,3 +1,8 @@
+## [0.1.2] - 2020-07-05
+
+* updated readme with example gif
+
+
 ## [0.1.1] - 2020-07-05
 
 * initial release

@@ -3,7 +3,11 @@
 This package contains a few alternatives for [InkSplash.splashFactory](https://api.flutter.dev/flutter/material/InkSplash/splashFactory-constant.html)
 and [InkRipple.splashFactory](https://api.flutter.dev/flutter/material/InkRipple/splashFactory-constant.html).
 
-You can find an extensive example [here](/example/lib/main.dart).
+You can find an extensive example [here](example/lib/main.dart).
+
+This for example is the `PathSplash.splashFactory(path)` effect.
+
+![Example](img/path_splash.gif "Example")
 
 ## How do I use them?
 
