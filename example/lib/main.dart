@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:path_parsing/path_parsing.dart';
 import 'package:splash/splash.dart';
 
 void main() {
-  /*
-  final p = PathToStringProxy();
-  writeSvgPathDataToPath(
-      '''M9.34213055,1 C257.32781,2.01271378 268.311104,5.93541453 253.854117,6.02051452 C229.127126,6.16606814 20.9766624,3.37096709 8.2284004,15.5452867 C-44.9028745,66.2845267 260.321179,26.7711751 260.290353,16.3713715 C260.276068,11.5517606 249.487635,2.06578214 8.44643764,30.3733916 C-28.5915406,34.7230904 82.6650534,38.1446252 119.874729,38.5924833 C160.120961,39.0768896 200.290156,32.6761521 240.536335,33.1668408 C247.794445,33.255333 268.748859,39.9559609 261.496573,40.3191624 C177.262044,44.5377085 92.9015774,43.2945414 8.60407959,44.7822309''',
-      p);
-  print(p.pathString);
-   */
   runApp(MyApp());
 }
 
@@ -357,35 +349,4 @@ class SampleDesign {
   final String title;
   final String subTitle;
   final ThemeData theme;
-}
-
-class PathToStringProxy extends PathProxy {
-  String pathString = 'Path p = Path();\n';
-
-  @override
-  void close() {
-    pathString += 'p.close();\n';
-  }
-
-  @override
-  void cubicTo(
-    double x1,
-    double y1,
-    double x2,
-    double y2,
-    double x3,
-    double y3,
-  ) {
-    pathString += 'p.cubicTo($x1, $y1, $x2, $y2, $x3, $y3);\n';
-  }
-
-  @override
-  void lineTo(double x, double y) {
-    pathString += 'p.lineTo($x, $y);\n';
-  }
-
-  @override
-  void moveTo(double x, double y) {
-    pathString += 'p.moveTo($x, $y);\n';
-  }
 }

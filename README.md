@@ -22,6 +22,8 @@ You can find an extensive example [here](example/lib/main.dart).
 ## How do I use them?
 
 ```dart
+import 'package:splash/splash.dart';
+
 final splashFactory = ...
 
 MaterialApp(
