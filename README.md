@@ -6,7 +6,6 @@
 This package contains a few alternatives for [InkSplash.splashFactory](https://api.flutter.dev/flutter/material/InkSplash/splashFactory-constant.html)
 and [InkRipple.splashFactory](https://api.flutter.dev/flutter/material/InkRipple/splashFactory-constant.html).
 
-
 ## List of available splash alternatives
 
 | Example                                           | Usage  |
@@ -17,7 +16,7 @@ and [InkRipple.splashFactory](https://api.flutter.dev/flutter/material/InkRipple
 | ![Wave Splash](img/wave_splash.gif "Wave Splash") | `WaveSplash.splashFactory`, `WaveSplash.customSplashFactory(strokeWidth: 30, blurStrength: 5)` |
 
 You can find an extensive example [here](example/lib/main.dart).
-
+It shows simple usages and some more custom usages.
 
 ## How do I use them?
 

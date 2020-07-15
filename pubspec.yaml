@@ -1,6 +1,6 @@
 name: splash
 description: This package contains a few InkSplash and InkRipple alternatives for a better UI
-version: 0.1.2
+version: 0.2.0
 homepage: https://uekoetter.dev/
 repository: https://github.com/ueman/splash
 issue_tracker: https://github.com/ueman/splash/issues
