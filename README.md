@@ -1,13 +1,23 @@
 # Splash
 
+[![Pub](https://img.shields.io/pub/v/splash.svg)](https://pub.dartlang.org/packages/splash)
+[![GitHub Workflow Status](https://github.com/ueman/splash/workflows/build/badge.svg?branch=master)](https://github.com/ueman/splash/actions?query=workflow%3Abuild)
+
 This package contains a few alternatives for [InkSplash.splashFactory](https://api.flutter.dev/flutter/material/InkSplash/splashFactory-constant.html)
 and [InkRipple.splashFactory](https://api.flutter.dev/flutter/material/InkRipple/splashFactory-constant.html).
 
+
+## List of available splash alternatives
+
+| Example                                           | Usage  |
+|-                                                  |-      |
+| ![No Splash](img/no_splash.gif "No Splash")       | `NoSplash.splashFactory` | 
+| ![Line Splash](img/line_splash.gif "Line Splash") | `LineSplash.splashFactory`, `LineSplash.customSplashFactory(paint: paint)` | 
+| ![Path Splash](img/path_splash.gif "Path Splash") | `PathSplash.splashFactory(path)`, `PathSplash.splashFactory(path, paint: paint, clip: false)` |
+| ![Wave Splash](img/wave_splash.gif "Wave Splash") | `WaveSplash.splashFactory`, `WaveSplash.customSplashFactory(strokeWidth: 30, blurStrength: 5)` |
+
 You can find an extensive example [here](example/lib/main.dart).
 
-This for example is the `PathSplash.splashFactory(path)` effect.
-
-![Example](img/path_splash.gif "Example")
 
 ## How do I use them?
 
@@ -21,11 +31,3 @@ MaterialApp(
   home: Scaffold(), 
 );
 ```
-
-## List of available splash alternatives
-
-| Name | Usage  | Use case |
-|-     |-      |-         |
-| NoSplash | `NoSplash.splashFactory` | You can use this class if you don't want a ripple splash effect |
-| LineSplash | `LineSplash.splashFactory` Optionally you can provide a paint to customize its appearance. | Draws a line instead of circle |
-| PathSplash | `PathSplash.splashFactory(path)` Optionally you can provide a paint to customize its appearance. | Animates a path |

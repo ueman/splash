@@ -26,7 +26,7 @@ class _NoSplashFactory extends InteractiveInkFeatureFactory {
   }
 }
 
-/// This class disables the splash.
+/// This class disables the splash effect.
 class NoSplash extends InteractiveInkFeature {
   NoSplash({
     @required MaterialInkController controller,
