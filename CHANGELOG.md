@@ -1,3 +1,7 @@
+## [1.0.0-nullsafety]
+
+- migrated to null safety
+
 ## [0.2.0]
 
 - added WaveSplash effect

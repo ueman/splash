@@ -11,8 +11,8 @@ const Duration _kSplashFadeDuration = Duration(milliseconds: 200);
 const double _kSplashInitialSize = 4; // logical pixels
 const double _kSplashConfirmedVelocity = 0.4; // logical pixels per millisecond
 
-RectCallback _getClipCallback(
-    RenderBox referenceBox, bool containedInkWell, RectCallback rectCallback) {
+RectCallback? _getClipCallback(
+    RenderBox referenceBox, bool containedInkWell, RectCallback? rectCallback) {
   if (rectCallback != null) {
     assert(containedInkWell);
     return rectCallback;
@@ -23,8 +23,12 @@ RectCallback _getClipCallback(
   return null;
 }
 
-double _getTargetRadius(RenderBox referenceBox, bool containedInkWell,
-    RectCallback rectCallback, Offset position) {
+double _getTargetRadius(
+  RenderBox referenceBox,
+  bool containedInkWell,
+  RectCallback? rectCallback,
+  Offset position,
+) {
   if (containedInkWell) {
     final Size size =
         rectCallback != null ? rectCallback().size : referenceBox.size;
@@ -48,18 +52,19 @@ class _WaveSplashFactory extends InteractiveInkFeatureFactory {
   final double blurStrength;
 
   @override
+  @factory
   InteractiveInkFeature create({
-    @required MaterialInkController controller,
-    @required RenderBox referenceBox,
-    @required Offset position,
-    @required Color color,
-    @required TextDirection textDirection,
+    required MaterialInkController controller,
+    required RenderBox referenceBox,
+    required Offset position,
+    required Color color,
+    required TextDirection textDirection,
     bool containedInkWell = false,
-    RectCallback rectCallback,
-    BorderRadius borderRadius,
-    ShapeBorder customBorder,
-    double radius,
-    VoidCallback onRemoved,
+    RectCallback? rectCallback,
+    BorderRadius? borderRadius,
+    ShapeBorder? customBorder,
+    double? radius,
+    VoidCallback? onRemoved,
   }) {
     return WaveSplash(
       controller: controller,
@@ -90,19 +95,18 @@ class _WaveSplashFactory extends InteractiveInkFeatureFactory {
 ///    circle).
 class WaveSplash extends InteractiveInkFeature {
   WaveSplash({
-    @required MaterialInkController controller,
-    @required RenderBox referenceBox,
-    @required TextDirection textDirection,
-    Offset position,
-    Color color,
+    required MaterialInkController controller,
+    required RenderBox referenceBox,
+    required TextDirection textDirection,
+    required Offset position,
+    required Color color,
     bool containedInkWell = false,
-    RectCallback rectCallback,
-    BorderRadius borderRadius,
-    ShapeBorder customBorder,
-    double radius,
-    VoidCallback onRemoved,
-  })  : assert(textDirection != null),
-        _position = position,
+    RectCallback? rectCallback,
+    BorderRadius? borderRadius,
+    ShapeBorder? customBorder,
+    double? radius,
+    VoidCallback? onRemoved,
+  })  : _position = position,
         _borderRadius = borderRadius ?? BorderRadius.zero,
         _customBorder = customBorder,
         _targetRadius = radius ??
@@ -117,7 +121,6 @@ class WaveSplash extends InteractiveInkFeature {
             referenceBox: referenceBox,
             color: color,
             onRemoved: onRemoved) {
-    assert(_borderRadius != null);
     _radiusController = AnimationController(
         duration: _kUnconfirmedSplashDuration, vsync: controller.vsync)
       ..addListener(controller.markNeedsPaint)
@@ -140,17 +143,17 @@ class WaveSplash extends InteractiveInkFeature {
 
   final Offset _position;
   final BorderRadius _borderRadius;
-  final ShapeBorder _customBorder;
+  final ShapeBorder? _customBorder;
   final double _targetRadius;
-  final RectCallback _clipCallback;
+  final RectCallback? _clipCallback;
   final bool _repositionToReferenceBox;
   final TextDirection _textDirection;
 
-  Animation<double> _radius;
-  AnimationController _radiusController;
+  late Animation<double> _radius;
+  late AnimationController _radiusController;
 
-  Animation<int> _alpha;
-  AnimationController _alphaController;
+  late Animation<int> _alpha;
+  late AnimationController _alphaController;
 
   /// Used to specify this type of ink splash for an [InkWell], [InkResponse]
   /// or material [Theme].
@@ -161,8 +164,8 @@ class WaveSplash extends InteractiveInkFeature {
     double strokeWidth = 30,
     double blurStrength = 5,
   }) {
-    assert(blurStrength != null && blurStrength >= 0);
-    assert(strokeWidth != null && strokeWidth >= 0);
+    assert(blurStrength >= 0);
+    assert(strokeWidth >= 0);
     return _WaveSplashFactory(strokeWidth, blurStrength);
   }
 
@@ -177,7 +180,7 @@ class WaveSplash extends InteractiveInkFeature {
 
   @override
   void cancel() {
-    _alphaController?.forward();
+    _alphaController.forward();
   }
 
   void _handleAlphaStatusChanged(AnimationStatus status) {
@@ -190,7 +193,7 @@ class WaveSplash extends InteractiveInkFeature {
   void dispose() {
     _radiusController.dispose();
     _alphaController.dispose();
-    _alphaController = null;
+    //_alphaController = null;
     super.dispose();
   }
 
@@ -204,8 +207,11 @@ class WaveSplash extends InteractiveInkFeature {
 
     Offset center = _position;
     if (_repositionToReferenceBox)
-      center = Offset.lerp(center, referenceBox.size.center(Offset.zero),
-          _radiusController.value);
+      center = Offset.lerp(
+        center,
+        referenceBox.size.center(Offset.zero),
+        _radiusController.value,
+      )!;
 
     paintBlurredCircle(
       canvas: canvas,
@@ -221,24 +227,17 @@ class WaveSplash extends InteractiveInkFeature {
   }
 
   void paintBlurredCircle({
-    @required Canvas canvas,
-    @required Matrix4 transform,
-    @required Paint paint,
-    @required Offset center,
-    @required double radius,
-    TextDirection textDirection,
-    ShapeBorder customBorder,
+    required Canvas canvas,
+    required Matrix4 transform,
+    required Paint paint,
+    required Offset center,
+    required double radius,
+    required TextDirection textDirection,
+    ShapeBorder? customBorder,
     BorderRadius borderRadius = BorderRadius.zero,
-    RectCallback clipCallback,
+    RectCallback? clipCallback,
   }) {
-    assert(canvas != null);
-    assert(transform != null);
-    assert(paint != null);
-    assert(center != null);
-    assert(radius != null);
-    assert(borderRadius != null);
-
-    final Offset originOffset = MatrixUtils.getAsTranslation(transform);
+    final Offset? originOffset = MatrixUtils.getAsTranslation(transform);
     canvas.save();
     if (originOffset == null) {
       canvas.transform(transform.storage);

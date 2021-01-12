@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key key, this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -95,12 +95,11 @@ class MyHomePage extends StatelessWidget {
               ),
           highlightColor: Colors.transparent,
           splashColor: Colors.orange,
-          splashFactory: LineSplash.customSplashFactory(
-              paint: Paint()
-                ..color = Colors.orange
-                ..strokeWidth = 10
-                ..strokeCap = StrokeCap.round
-                ..style = PaintingStyle.stroke),
+          splashFactory: LineSplash.customSplashFactory(Paint()
+            ..color = Colors.orange
+            ..strokeWidth = 10
+            ..strokeCap = StrokeCap.round
+            ..style = PaintingStyle.stroke),
         ),
       ),
       SampleDesign(
@@ -195,7 +194,7 @@ class MyHomePage extends StatelessWidget {
 }
 
 class Sample extends StatefulWidget {
-  const Sample({Key key, this.name}) : super(key: key);
+  const Sample({Key? key, required this.name}) : super(key: key);
 
   final String name;
 
@@ -260,11 +259,14 @@ class _SampleState extends State<Sample> {
           RaisedButton(child: const Text('RaisedButton'), onPressed: () {}),
           FlatButton(child: const Text('FlatButton'), onPressed: () {}),
           OutlineButton(child: const Text('OutlineButton'), onPressed: () {}),
-          IconButton(icon: Icon(Icons.settings), onPressed: () {}),
+          IconButton(icon: const Icon(Icons.settings), onPressed: () {}),
           ListTile(title: const Text('ListTile'), onTap: () {}),
           Checkbox(
               value: checkBoxValue,
               onChanged: (newValue) {
+                if (newValue == null) {
+                  return;
+                }
                 setState(() {
                   checkBoxValue = newValue;
                 });
@@ -328,7 +330,7 @@ Path createSamplePath() {
 }
 
 class Choice {
-  const Choice({this.title, this.icon});
+  const Choice({required this.title, required this.icon});
 
   final String title;
   final IconData icon;

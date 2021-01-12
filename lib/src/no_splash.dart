@@ -5,17 +5,17 @@ class _NoSplashFactory extends InteractiveInkFeatureFactory {
 
   @override
   InteractiveInkFeature create({
-    @required MaterialInkController controller,
-    @required RenderBox referenceBox,
-    @required Offset position,
-    @required Color color,
-    @required TextDirection textDirection,
+    required MaterialInkController controller,
+    required RenderBox referenceBox,
+    required Offset position,
+    required Color color,
+    required TextDirection textDirection,
     bool containedInkWell = false,
-    RectCallback rectCallback,
-    BorderRadius borderRadius,
-    ShapeBorder customBorder,
-    double radius,
-    VoidCallback onRemoved,
+    RectCallback? rectCallback,
+    BorderRadius? borderRadius,
+    ShapeBorder? customBorder,
+    double? radius,
+    VoidCallback? onRemoved,
   }) {
     return NoSplash(
       controller: controller,
@@ -29,12 +29,11 @@ class _NoSplashFactory extends InteractiveInkFeatureFactory {
 /// This class disables the splash effect.
 class NoSplash extends InteractiveInkFeature {
   NoSplash({
-    @required MaterialInkController controller,
-    @required RenderBox referenceBox,
-    @required Color color,
-    VoidCallback onRemoved,
-  })  : assert(color != null),
-        super(
+    required MaterialInkController controller,
+    required RenderBox referenceBox,
+    required Color color,
+    VoidCallback? onRemoved,
+  }) : super(
           controller: controller,
           referenceBox: referenceBox,
           color: color,

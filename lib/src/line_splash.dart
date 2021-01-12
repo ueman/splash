@@ -5,29 +5,27 @@ const Duration _kProgressDuration = Duration(milliseconds: 225);
 class _LineSplashFactory extends InteractiveInkFeatureFactory {
   const _LineSplashFactory(this.paint);
 
-  final Paint paint;
+  final Paint? paint;
 
   @override
   InteractiveInkFeature create({
-    @required MaterialInkController controller,
-    @required RenderBox referenceBox,
-    @required Offset position,
-    @required Color color,
-    @required TextDirection textDirection,
+    required MaterialInkController controller,
+    required RenderBox referenceBox,
+    required Offset position,
+    required Color color,
+    required TextDirection textDirection,
     bool containedInkWell = false,
-    RectCallback rectCallback,
-    BorderRadius borderRadius,
-    ShapeBorder customBorder,
-    double radius,
-    VoidCallback onRemoved,
+    RectCallback? rectCallback,
+    BorderRadius? borderRadius,
+    ShapeBorder? customBorder,
+    double? radius,
+    VoidCallback? onRemoved,
   }) {
     return LineSplash(
       controller: controller,
       referenceBox: referenceBox,
-      position: position,
       color: color,
       onRemoved: onRemoved,
-      textDirection: textDirection,
       newPaint: paint,
     );
   }
@@ -35,17 +33,12 @@ class _LineSplashFactory extends InteractiveInkFeatureFactory {
 
 class LineSplash extends InteractiveInkFeature {
   LineSplash({
-    @required MaterialInkController controller,
-    @required RenderBox referenceBox,
-    @required Offset position,
-    @required Color color,
-    @required TextDirection textDirection,
-    VoidCallback onRemoved,
-    Paint newPaint,
-  })  : assert(color != null),
-        assert(position != null),
-        assert(textDirection != null),
-        super(
+    required MaterialInkController controller,
+    required RenderBox referenceBox,
+    required Color color,
+    VoidCallback? onRemoved,
+    Paint? newPaint,
+  }) : super(
           controller: controller,
           referenceBox: referenceBox,
           color: color,
@@ -81,12 +74,12 @@ class LineSplash extends InteractiveInkFeature {
   static const InteractiveInkFeatureFactory splashFactory =
       _LineSplashFactory(null);
 
-  static InteractiveInkFeatureFactory customSplashFactory({Paint paint}) =>
+  static InteractiveInkFeatureFactory customSplashFactory(Paint paint) =>
       _LineSplashFactory(paint);
 
-  Animation<double> _progressAnimation;
-  AnimationController _progressController;
-  Paint paint;
+  late Animation<double> _progressAnimation;
+  late AnimationController _progressController;
+  late Paint paint;
 
   /// Called when the button press is confirmed.
   @override
@@ -119,7 +112,8 @@ class LineSplash extends InteractiveInkFeature {
     path.moveTo(startX, startY);
     path.lineTo(endX, startY);
 
-    final Offset originOffset = MatrixUtils.getAsTranslation(transform);
+    // the matrix is a 2D translation, so this never returns null
+    final originOffset = MatrixUtils.getAsTranslation(transform)!;
     path = path.shift(originOffset);
     canvas.drawPath(path, paint);
   }

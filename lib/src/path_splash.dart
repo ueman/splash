@@ -9,31 +9,29 @@ class _PathRippleFactory extends InteractiveInkFeatureFactory {
     this.path, {
     this.paint,
     this.clip = false,
-  })  : assert(path != null),
-        assert(clip != null);
+  });
 
   final Path path;
-  final Paint paint;
+  final Paint? paint;
   final bool clip;
 
   @override
   InteractiveInkFeature create({
-    @required MaterialInkController controller,
-    @required RenderBox referenceBox,
-    @required Offset position,
-    @required Color color,
-    @required TextDirection textDirection,
+    required MaterialInkController controller,
+    required RenderBox referenceBox,
+    required Offset position,
+    required Color color,
+    required TextDirection textDirection,
     bool containedInkWell = false,
-    RectCallback rectCallback,
-    BorderRadius borderRadius,
-    ShapeBorder customBorder,
-    double radius,
-    VoidCallback onRemoved,
+    RectCallback? rectCallback,
+    BorderRadius? borderRadius,
+    ShapeBorder? customBorder,
+    double? radius,
+    VoidCallback? onRemoved,
   }) {
     return PathSplash(
       controller: controller,
       referenceBox: referenceBox,
-      position: position,
       color: color,
       onRemoved: onRemoved,
       textDirection: textDirection,
@@ -51,24 +49,20 @@ class _PathRippleFactory extends InteractiveInkFeatureFactory {
 
 class PathSplash extends InteractiveInkFeature {
   PathSplash({
-    @required MaterialInkController controller,
-    @required RenderBox referenceBox,
-    @required Offset position,
-    @required Color color,
-    @required TextDirection textDirection,
-    VoidCallback onRemoved,
-    this.path,
-    Paint customPaint,
-    this.clip,
+    required MaterialInkController controller,
+    required RenderBox referenceBox,
+    required Color color,
+    required TextDirection textDirection,
+    VoidCallback? onRemoved,
+    required this.path,
+    Paint? customPaint,
+    required this.clip,
     bool containedInkWell = false,
-    RectCallback rectCallback,
-    BorderRadius borderRadius,
-    ShapeBorder customBorder,
-    double radius,
-  })  : assert(color != null),
-        assert(position != null),
-        assert(textDirection != null),
-        _textDirection = textDirection,
+    RectCallback? rectCallback,
+    BorderRadius? borderRadius,
+    ShapeBorder? customBorder,
+    double? radius,
+  })  : _textDirection = textDirection,
         _borderRadius = borderRadius ?? BorderRadius.zero,
         _customBorder = customBorder,
         _clipCallback =
@@ -107,26 +101,23 @@ class PathSplash extends InteractiveInkFeature {
 
   static InteractiveInkFeatureFactory splashFactory(
     Path path, {
-    Paint paint,
+    Paint? paint,
     bool clip = false,
-  }) {
-    assert(path != null);
-    assert(clip != null);
-    return _PathRippleFactory(path, paint: paint, clip: clip);
-  }
+  }) =>
+      _PathRippleFactory(path, paint: paint, clip: clip);
 
-  Animation<double> _progressAnimation;
+  late Animation<double> _progressAnimation;
+  late AnimationController _progressController;
+  late Paint paint;
 
-  AnimationController _progressController;
+  final BorderRadius _borderRadius;
+  final ShapeBorder? _customBorder;
+  final RectCallback? _clipCallback;
+  final TextDirection _textDirection;
+  final double? _radius;
 
-  Paint paint;
   Path path;
   bool clip;
-  final BorderRadius _borderRadius;
-  final ShapeBorder _customBorder;
-  final RectCallback _clipCallback;
-  final TextDirection _textDirection;
-  final double _radius;
 
   @override
   void confirm() => _progressController.reverse();
@@ -150,7 +141,7 @@ class PathSplash extends InteractiveInkFeature {
     final path = this.path;
     var animatedPath = createAnimatedPath(path, progress);
 
-    final originOffset = MatrixUtils.getAsTranslation(transform);
+    final originOffset = MatrixUtils.getAsTranslation(transform)!;
     final moveToCenterOfCanvasOffset = moveToCenterOfCanvas(
       referenceBox.size.center(originOffset),
       path.getBounds().center.translate(originOffset.dx, originOffset.dy),
@@ -178,8 +169,8 @@ class PathSplash extends InteractiveInkFeature {
     Canvas canvas,
     Offset originOffset,
     Path path,
-    RectCallback clipCallback,
-    ShapeBorder customBorder,
+    RectCallback? clipCallback,
+    ShapeBorder? customBorder,
     BorderRadius borderRadius,
     TextDirection textDirection,
   ) {
@@ -194,7 +185,8 @@ class PathSplash extends InteractiveInkFeature {
         textDirection: textDirection,
       ));
     } else if (_radius != null) {
-      canvas.clipRRect(RRect.fromRectXY(rect, _radius, _radius));
+      final radius = _radius!;
+      canvas.clipRRect(RRect.fromRectXY(rect, radius, radius));
     } else {
       canvas.clipRect(rect);
     }
@@ -260,10 +252,10 @@ class PathSplash extends InteractiveInkFeature {
   }
 }
 
-RectCallback _getClipCallback(
+RectCallback? _getClipCallback(
   RenderBox referenceBox,
   bool containedInkWell,
-  RectCallback rectCallback,
+  RectCallback? rectCallback,
 ) {
   if (rectCallback != null) {
     assert(containedInkWell);
