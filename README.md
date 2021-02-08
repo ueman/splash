@@ -47,6 +47,10 @@ MaterialApp(
 
 I would really appreciate pull request with new splash factories or good looking examples in the example app. You can do it [here](https://github.com/ueman/splash).
 
-# Sponsoring
+## Author
+
+- Jonas Uekötter [GitHub](https://github.com/ueman) [Twitter](https://twitter.com/ue_man)
+
+## Sponsoring
 
 I'm working on my packages on my free-time, but I don't have as much time as I would. If this package or any other package I created is helping you, please consider to [sponsor](https://github.com/ueman#sponsor-me) me. By doing so, I will prioritize your issues or your pull-requests before the others.
