@@ -1,3 +1,8 @@
+## [1.0.0-nullsafety.1]
+
+- update to latest Flutter beta
+- improve readme
+
 ## [1.0.0-nullsafety]
 
 - migrated to null safety
