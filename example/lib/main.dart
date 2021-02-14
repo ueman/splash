@@ -256,21 +256,22 @@ class _SampleState extends State<Sample> {
       ),
       body: Column(
         children: <Widget>[
-          RaisedButton(child: const Text('RaisedButton'), onPressed: () {}),
-          FlatButton(child: const Text('FlatButton'), onPressed: () {}),
-          OutlineButton(child: const Text('OutlineButton'), onPressed: () {}),
+          ElevatedButton(child: const Text('RaisedButton'), onPressed: () {}),
+          TextButton(child: const Text('FlatButton'), onPressed: () {}),
+          ElevatedButton(child: const Text('OutlineButton'), onPressed: () {}),
           IconButton(icon: const Icon(Icons.settings), onPressed: () {}),
           ListTile(title: const Text('ListTile'), onTap: () {}),
           Checkbox(
-              value: checkBoxValue,
-              onChanged: (newValue) {
-                if (newValue == null) {
-                  return;
-                }
-                setState(() {
-                  checkBoxValue = newValue;
-                });
-              }),
+            value: checkBoxValue,
+            onChanged: (newValue) {
+              if (newValue == null) {
+                return;
+              }
+              setState(() {
+                checkBoxValue = newValue;
+              });
+            },
+          ),
         ],
       ),
     );
