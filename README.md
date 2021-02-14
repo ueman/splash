@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="img/splash.png" max-height="100" alt="Splash" />
+  <img src="https://raw.githubusercontent.com/ueman/splash/master/img/splash.png" max-height="100" alt="Splash" />
 </p>
 
 <p align="center">
@@ -14,18 +14,18 @@
 ---
 
 This package contains a few alternatives for [InkSplash.splashFactory](https://api.flutter.dev/flutter/material/InkSplash/splashFactory-constant.html)
-and [InkRipple.splashFactory](https://api.flutter.dev/flutter/material/InkRipple/splashFactory-constant.html).
+and [InkRipple.splashFactory](https://api.flutter.dev/flutter/material/InkRipple/splashFactory-constant.html). In other words this are custom button pressed effects.
 
 ## List of available alternatives
 
 | Example                                           | Usage  |
 |-                                                  |-      |
-| ![Wave Splash](img/wave_splash.gif "Wave Splash") | `WaveSplash.splashFactory`, `WaveSplash.customSplashFactory(strokeWidth: 30, blurStrength: 5)` |
-| ![Path Splash](img/path_splash.gif "Path Splash") | `PathSplash.splashFactory(path)`, `PathSplash.splashFactory(path, paint: paint, clip: false)` |
-| ![Line Splash](img/line_splash.gif "Line Splash") | `LineSplash.splashFactory`, `LineSplash.customSplashFactory(paint: paint)` | 
-| ![No Splash](img/no_splash.gif "No Splash")       | `NoSplash.splashFactory` | 
+| ![Wave Splash](https://raw.githubusercontent.com/ueman/splash/master/img/wave_splash.gif "Wave Splash") | `WaveSplash.splashFactory`, `WaveSplash.customSplashFactory(strokeWidth: 30, blurStrength: 5)` |
+| ![Path Splash](https://raw.githubusercontent.com/ueman/splash/master/img/path_splash.gif "Path Splash") | `PathSplash.splashFactory(path)`, `PathSplash.splashFactory(path, paint: paint, clip: false)` |
+| ![Line Splash](https://raw.githubusercontent.com/ueman/splash/master/img/line_splash.gif "Line Splash") | `LineSplash.splashFactory`, `LineSplash.customSplashFactory(paint: paint)` | 
+| ![No Splash](https://raw.githubusercontent.com/ueman/splash/master/img/no_splash.gif "No Splash")       | `NoSplash.splashFactory` | 
 
-You can find an extensive example [here](example/lib/main.dart).
+You can find an extensive example [here](https://github.com/ueman/splash/blob/master/example/lib/main.dart).
 It shows simple usages and some more advances examples.
 
 ## How do I use them?
