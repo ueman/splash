@@ -40,13 +40,6 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
       SampleDesign(
-        'NoSplash.splashFactory',
-        'This splash factory creates no effect',
-        Theme.of(context).copyWith(
-          splashFactory: NoSplash.splashFactory,
-        ),
-      ),
-      SampleDesign(
         'LineSplash.splashFactory',
         'This splash factory creates an animated line',
         Theme.of(context).copyWith(
@@ -256,11 +249,35 @@ class _SampleState extends State<Sample> {
       ),
       body: Column(
         children: <Widget>[
-          ElevatedButton(child: const Text('RaisedButton'), onPressed: () {}),
-          TextButton(child: const Text('FlatButton'), onPressed: () {}),
-          ElevatedButton(child: const Text('OutlineButton'), onPressed: () {}),
-          IconButton(icon: const Icon(Icons.settings), onPressed: () {}),
-          ListTile(title: const Text('ListTile'), onTap: () {}),
+          ElevatedButton(
+            child: const Text('RaisedButton'),
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              splashFactory: Theme.of(context).splashFactory,
+            ),
+          ),
+          TextButton(
+            child: const Text('FlatButton'),
+            onPressed: () {},
+            style: TextButton.styleFrom(
+              splashFactory: Theme.of(context).splashFactory,
+            ),
+          ),
+          OutlinedButton(
+            child: const Text('OutlineButton'),
+            onPressed: () {},
+            style: OutlinedButton.styleFrom(
+              splashFactory: Theme.of(context).splashFactory,
+            ),
+          ),
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {},
+          ),
+          ListTile(
+            title: const Text('ListTile'),
+            onTap: () {},
+          ),
           Checkbox(
             value: checkBoxValue,
             onChanged: (newValue) {

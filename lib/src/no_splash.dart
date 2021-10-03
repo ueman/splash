@@ -17,6 +17,7 @@ class _NoSplashFactory extends InteractiveInkFeatureFactory {
     double? radius,
     VoidCallback? onRemoved,
   }) {
+    // ignore: deprecated_member_use_from_same_package
     return NoSplash(
       controller: controller,
       referenceBox: referenceBox,
@@ -27,6 +28,10 @@ class _NoSplashFactory extends InteractiveInkFeatureFactory {
 }
 
 /// This class disables the splash effect.
+@Deprecated(
+  'Use Flutters inbuild NoSplash: '
+  'https://api.flutter.dev/flutter/material/NoSplash-class.html',
+)
 class NoSplash extends InteractiveInkFeature {
   NoSplash({
     required MaterialInkController controller,

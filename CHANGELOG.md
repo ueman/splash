@@ -1,3 +1,9 @@
+## [1.1.0]
+
+- Deprecate NoSplash, please use https://api.flutter.dev/flutter/material/NoSplash-class.html
+- Fix example
+- Improve Readme
+
 ## [1.0.0-nullsafety.1]
 
 - update to latest Flutter beta

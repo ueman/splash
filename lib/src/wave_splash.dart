@@ -5,6 +5,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:splash/splash.dart';
 
+import 'package:splash/splash.dart' as splash;
+
 const Duration _kUnconfirmedSplashDuration = Duration(seconds: 1);
 const Duration _kSplashFadeDuration = Duration(milliseconds: 200);
 
@@ -89,7 +91,8 @@ class _WaveSplashFactory extends InteractiveInkFeatureFactory {
 ///
 ///  * [LineSplash], which is an ink splash feature that draws a single line
 ///    across a button.
-///  * [NoSplash], which disables all ripple or splash effects.
+// ignore: deprecated_member_use_from_same_package
+///  * [splash.NoSplash], which disables all ripple or splash effects.
 ///  * [PathSplash], which animates a drawing of a path.
 ///  * [WaveSplash], which is an ink feature that draws a wave (like a blurred
 ///    circle).

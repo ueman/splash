@@ -13,6 +13,8 @@
 
 ---
 
+💰 Using this library in a commercial product? Consider [becoming a sponsor](https://github.com/ueman#sponsor-me).
+
 This package contains a few alternatives for [InkSplash.splashFactory](https://api.flutter.dev/flutter/material/InkSplash/splashFactory-constant.html)
 and [InkRipple.splashFactory](https://api.flutter.dev/flutter/material/InkRipple/splashFactory-constant.html). In other words this are custom button pressed effects.
 
@@ -42,6 +44,20 @@ MaterialApp(
   home: Scaffold(), 
 );
 ```
+```dart
+import 'package:splash/splash.dart';
+
+final splashFactory = ...
+
+OutlinedButton(
+  child: const Text('OutlineButton'),
+  onPressed: () {},
+  style: OutlinedButton.styleFrom(
+    splashFactory: splashFactory,
+  ),
+);
+```
+
 
 # New features and ideas
 
@@ -50,7 +66,3 @@ I would really appreciate pull request with new splash factories or good looking
 ## Author
 
 - Jonas Uekötter [GitHub](https://github.com/ueman) [Twitter](https://twitter.com/ue_man)
-
-## Sponsoring
-
-I'm working on my packages on my free-time, but I don't have as much time as I would. If this package or any other package I created is helping you, please consider to [sponsor](https://github.com/ueman#sponsor-me) me. By doing so, I will prioritize your issues or your pull-requests before the others.
