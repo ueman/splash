@@ -6,9 +6,9 @@
   <a href="https://pub.dartlang.org/packages/splash"><img src="https://img.shields.io/pub/v/splash.svg" alt="pub.dev"></a>
   <a href="https://github.com/ueman/splash/actions?query=workflow%3Abuild"><img src="https://github.com/ueman/splash/workflows/build/badge.svg?branch=master" alt="GitHub Workflow Status"></a>
   <a href="https://github.com/ueman#sponsor-me"><img src="https://img.shields.io/github/sponsors/ueman" alt="Sponsoring"></a>
-  <a href="https://pub.dev/packages/splash/score"><img src="https://badges.bar/splash/likes" alt="likes"></a>
-  <a href="https://pub.dev/packages/splash/score"><img src="https://badges.bar/splash/popularity" alt="popularity"></a>
-  <a href="https://pub.dev/packages/splash/score"><img src="https://badges.bar/splash/pub%20points" alt="pub points"></a>
+  <a href="https://pub.dev/packages/splash/score"><img src="https://img.shields.io/pub/likes/splash" alt="likes"></a>
+  <a href="https://pub.dev/packages/splash/score"><img src="https://img.shields.io/pub/popularity/splash" alt="popularity"></a>
+  <a href="https://pub.dev/packages/splash/score"><img src="https://img.shields.io/pub/points/splash" alt="pub points"></a>
 </p>
 
 ---
