@@ -7,7 +7,7 @@ jobs:
     # the golden images were generated on MacOS, therefore the tests must run on MacOS
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v1
         with:
           channel: beta
@@ -34,7 +34,7 @@ jobs:
       GRADLE_OPTS: -Dorg.gradle.daemon=false
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v1
         with:
           channel: ${{ matrix.flutter_channel }}
