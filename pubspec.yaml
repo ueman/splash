@@ -6,7 +6,7 @@ repository: https://github.com/ueman/splash
 issue_tracker: https://github.com/ueman/splash/issues
 
 environment:
-  sdk: '>=2.13.0 < 3.0.0'
+  sdk: '< 4.0.0'
   flutter: '>=2.0.0'
 
 dependencies:
